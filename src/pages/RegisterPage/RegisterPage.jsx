@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
+import { Btn, Form, Input, Label, Title } from './RegisterPage.styled';
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -50,31 +51,36 @@ const RegisterPage = () => {
         <title>RegisterPage</title>
       </Helmet>
       <div>
-        <h2>Registration</h2>
-        <form  onSubmit={handleSubmit}>
-          <input
+        <Title>Registration</Title>
+        <Form onSubmit={handleSubmit}>
+          <Label htmlFor="name">Name</Label>
+          <Input
             type="text"
             name="name"
             value={name}
             placeholder="Name"
             onChange={handleChange}
           />
-          <input
+          <Label htmlFor="email">Email</Label>
+
+          <Input
             type="email"
             name="email"
             value={email}
             placeholder="example@email.com"
             onChange={handleChange}
           />
-          <input
+          <Label htmlFor="password">Password</Label>
+
+          <Input
             type="password"
             name="password"
             value={password}
             placeholder="Password"
             onChange={handleChange}
           />
-          <button type="submit ">Register</button>
-        </form>
+          <Btn type="submit ">Register</Btn>
+        </Form>
       </div>
     </>
   );
