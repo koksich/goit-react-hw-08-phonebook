@@ -6,6 +6,7 @@ const HomePage = () => {
       <Helmet>
         <title>HomePage</title>
       </Helmet>
+      <h2>Welcome to the Phonebook</h2>
     </>
   );
 };

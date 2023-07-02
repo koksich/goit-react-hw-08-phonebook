@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { infoToast } from 'components/Toasts/Toasts';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const token = {
   set(token) {
@@ -15,9 +15,9 @@ const token = {
 
 export const register = createAsyncThunk('auth/register', async credentials => {
   try {
-    const response = await axios.post('/users/signup', credentials);
-    token.set(response.data.token);
-    return response.data;
+    const {data} = await axios.post('/users/signup', credentials);
+    token.set(data.token);
+    return data;
   } catch (error) {
     infoToast('The user is already existed');
   }
@@ -25,9 +25,9 @@ export const register = createAsyncThunk('auth/register', async credentials => {
 
 export const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
-    const response = await axios.post('/users/login', credentials);
-    token.set(response.data.token);
-    return response.data;
+    const {data} = await axios.post('/users/login', credentials);
+    token.set(data.token);
+    return data;
   } catch (error) {
     infoToast('Incorrect login or password');
   }

@@ -13,8 +13,7 @@ export const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder
-      .addCase(register.fulfilled, (state, action) => {
+    builder.addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
@@ -27,7 +26,7 @@ export const authSlice = createSlice({
       .addCase(logOut.fulfilled, (state, action) => {
         state.user = { name: null, email: null };
         state.token = null;
-        state.LogedIn = false;
+        state.isLoggedIn = false;
       })
       .addCase(fetchCurrentUser.pending, state => {
         state.isFetchingCurrentUser = true;
