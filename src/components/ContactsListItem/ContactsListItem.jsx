@@ -1,18 +1,19 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
+import { Btn, ListItem, P } from './ContactsListItem.styled';
 
 
 export const ContactListItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
 
   return (
-    <li>
+    <ListItem>
       <div>
-        <p>{name}: </p>
-        <p>{number}</p>
+        <P>{name}: </P>
+        <P>{number}</P>
       </div>
-      <button
+      <Btn
         type="button"
         aria-label="delete"
         onClick={() => {
@@ -20,8 +21,8 @@ export const ContactListItem = ({ id, name, number }) => {
         }}
       >
         Delete
-      </button>
-    </li>
+      </Btn>
+    </ListItem>
   );
 };
 

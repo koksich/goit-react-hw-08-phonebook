@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authOperations';
+import { Btn, Form, Input, Label, Title } from './LoginPage.styled';
 
 const LogInPage = () => {
   const dispatch = useDispatch();
@@ -28,33 +29,35 @@ const LogInPage = () => {
 
     setEmail('');
     setPassword('');
-}
+  };
 
   return (
     <>
       <Helmet>
         <title>LogInPage</title>
       </Helmet>
-      <h2>Please, Log in </h2>
-      <form onSubmit={handleSubmit}>
-        <input
+      <Title>Please, Log In </Title>
+      <Form onSubmit={handleSubmit}>
+        <Label htmlFor="email">Email</Label>
+        <Input
           type="email"
           name="email"
           value={email}
           placeholder="example@email.com"
           onChange={handleChange}
+          autocomplete="off"
         />
-        <input
+        <Label htmlFor="password">Password</Label>
+        <Input
           type="password"
           name="password"
           value={password}
           placeholder="Password"
           onChange={handleChange}
+          autocomplete="off"
         />
-        <button type="submit ">
-          Log in
-        </button>
-      </form>
+        <Btn type="submit ">Log in</Btn>
+      </Form>
     </>
   );
 };

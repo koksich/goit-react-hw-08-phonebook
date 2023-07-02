@@ -29,12 +29,12 @@ const RegisterPage = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const form = event.currentTarget.elements;
+    const form = event.currentTarget;
     dispatch(
       register({
-        name: form.name.value,
-        email: form.email.value,
-        password: form.password.value,
+        name: form.elements.name.value,
+        email: form.elements.email.value,
+        password: form.elements.password.value,
       })
     );
 
@@ -70,7 +70,7 @@ const RegisterPage = () => {
             type="password"
             name="password"
             value={password}
-            placeholder="password"
+            placeholder="Password"
             onChange={handleChange}
           />
           <button type="submit ">Register</button>

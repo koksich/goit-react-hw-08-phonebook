@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet';
+import { Title } from './HomePage.styled';
 
 const HomePage = () => {
   return (
@@ -6,7 +7,7 @@ const HomePage = () => {
       <Helmet>
         <title>HomePage</title>
       </Helmet>
-      <h2>Welcome to the Phonebook</h2>
+      <Title>Welcome to the Phonebook!</Title>
     </>
   );
 };

@@ -13,8 +13,10 @@ export const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(register.fulfilled, (state, action) => {
+    builder
+      .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
+        console.log(state);
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
@@ -32,9 +34,9 @@ export const authSlice = createSlice({
         state.isFetchingCurrentUser = true;
       })
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
-          state.user = action.payload;
-          state.isLoggedIn = true;
-          state.isFetchingCurrentUser = false;
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isFetchingCurrentUser = false;
       })
       .addCase(fetchCurrentUser.rejected, state => {
         state.isFetchingCurrentUser = false;

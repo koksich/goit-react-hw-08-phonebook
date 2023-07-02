@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "redux/contacts/operations";
 import { selectContacts } from "redux/contacts/selectors";
+import { Btn, Form, Input, Label } from "./ContactsForm.styled";
+import { warningToast } from "components/Toasts/Toasts";
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -11,7 +13,7 @@ export const ContactForm = () => {
     const { name, number } = event.currentTarget.elements;
 
     if (onDuplicateCheck(name.value)) {
-      alert(`${name.value} is already in contacts`);
+      warningToast(`${name.value} is already in contacts`);
       event.currentTarget.reset();
       name.focus();
       return;
@@ -27,9 +29,9 @@ export const ContactForm = () => {
   };
 
   return (
-      <form      onSubmit={handleSubmit}>
-      <label htmlFor="name">Name</label>
-      <input
+      <Form      onSubmit={handleSubmit}>
+      <Label htmlFor="name">Name</Label>
+      <Input
         type="text"
         name="name"
         pattern="^[A-Za-z\u0080-\uFFFF ']+$"
@@ -38,8 +40,8 @@ export const ContactForm = () => {
         id="name"
       />
 
-      <label htmlFor="number">Number</label>
-      <input
+      <Label htmlFor="number">Number</Label>
+      <Input
         type="tel"
         name="number"
         pattern="^(\+?[0-9.\(\)\-\s]*)$"
@@ -48,7 +50,7 @@ export const ContactForm = () => {
         id="number"
       />
 
-      <button type="submit">Add contact</button>
-    </form>
+      <Btn type="submit">Add contact</Btn>
+    </Form>
   );
 };
